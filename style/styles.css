@@ -8,6 +8,15 @@
   --font: "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
+::selection {
+  background: rgba(64, 149, 255, 0.35);
+  color: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 *,
 *::before,
 *::after {
@@ -30,6 +39,8 @@ body {
     var(--bg);
   color: var(--ink);
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .nav {
@@ -154,6 +165,11 @@ body {
   box-shadow: 0 0 8px var(--accent), 0 0 16px rgba(64, 149, 255, 0.5);
 }
 
+.nav-link--active::after {
+  transform: translateX(-50%) scaleX(0.6);
+  opacity: 0.5;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -165,8 +181,11 @@ main {
   display: grid;
   place-items: center;
   text-align: center;
-  background: linear-gradient(140deg, rgba(64, 149, 255, 0.08), transparent 38%),
+  background:
+    linear-gradient(140deg, rgba(64, 149, 255, 0.08), transparent 38%),
     linear-gradient(220deg, rgba(125, 200, 255, 0.08), transparent 42%),
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(64, 149, 255, 0.03) 59px, rgba(64, 149, 255, 0.03) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(64, 149, 255, 0.03) 59px, rgba(64, 149, 255, 0.03) 60px),
     var(--bg-soft);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
@@ -422,7 +441,8 @@ main {
 
 .footer {
   background: linear-gradient(180deg, rgba(5, 5, 5, 0.6) 0%, rgba(11, 11, 13, 0.95) 100%);
-  border-top: 1px solid rgba(64, 149, 255, 0.15);
+  border-top: 1px solid rgba(64, 149, 255, 0.2);
+  box-shadow: 0 -8px 32px rgba(64, 149, 255, 0.08);
   padding: 48px 28px 32px;
   backdrop-filter: blur(12px);
 }
@@ -547,6 +567,8 @@ main {
   background:
     linear-gradient(140deg, rgba(64, 149, 255, 0.12), transparent 38%),
     linear-gradient(220deg, rgba(92, 212, 255, 0.10), transparent 42%),
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(64, 149, 255, 0.03) 59px, rgba(64, 149, 255, 0.03) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(64, 149, 255, 0.03) 59px, rgba(64, 149, 255, 0.03) 60px),
     var(--bg-soft);
 }
 
@@ -554,6 +576,8 @@ main {
   background:
     linear-gradient(140deg, rgba(100, 120, 255, 0.12), transparent 38%),
     linear-gradient(220deg, rgba(140, 100, 255, 0.10), transparent 42%),
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(100, 120, 255, 0.03) 59px, rgba(100, 120, 255, 0.03) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(100, 120, 255, 0.03) 59px, rgba(100, 120, 255, 0.03) 60px),
     var(--bg-soft);
 }
 
@@ -561,6 +585,8 @@ main {
   background:
     linear-gradient(140deg, rgba(64, 200, 200, 0.12), transparent 38%),
     linear-gradient(220deg, rgba(100, 220, 255, 0.10), transparent 42%),
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(64, 200, 200, 0.03) 59px, rgba(64, 200, 200, 0.03) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(64, 200, 200, 0.03) 59px, rgba(64, 200, 200, 0.03) 60px),
     var(--bg-soft);
 }
 
@@ -568,6 +594,8 @@ main {
   background:
     linear-gradient(140deg, rgba(80, 180, 140, 0.12), transparent 38%),
     linear-gradient(220deg, rgba(100, 200, 180, 0.10), transparent 42%),
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(80, 180, 140, 0.03) 59px, rgba(80, 180, 140, 0.03) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(80, 180, 140, 0.03) 59px, rgba(80, 180, 140, 0.03) 60px),
     var(--bg-soft);
 }
 
@@ -688,5 +716,44 @@ main {
 
   .cta-text {
     font-size: 0.85rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(64, 149, 255, 0.3);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(64, 149, 255, 0.5);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(64, 149, 255, 0.3) var(--bg);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }
