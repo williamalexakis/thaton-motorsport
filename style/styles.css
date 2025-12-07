@@ -506,11 +506,63 @@ main {
 
 .footer-email:hover {
   color: #ffffff;
-  transform: translateY(-2px);
 }
 
 .footer-email:hover::before {
   opacity: 1;
+}
+
+/* Page-specific footer glows */
+.page-about .footer {
+  border-top-color: rgba(64, 149, 255, 0.2);
+  box-shadow: 0 -8px 32px rgba(64, 149, 255, 0.08);
+}
+
+.page-about .footer-email {
+  color: #7dc8ff;
+}
+
+.page-about .footer-email::before {
+  background: linear-gradient(135deg, rgba(64, 149, 255, 0.1), rgba(125, 200, 255, 0.05));
+}
+
+.page-team .footer {
+  border-top-color: rgba(100, 120, 255, 0.2);
+  box-shadow: 0 -8px 32px rgba(100, 120, 255, 0.08);
+}
+
+.page-team .footer-email {
+  color: #a8b4ff;
+}
+
+.page-team .footer-email::before {
+  background: linear-gradient(135deg, rgba(100, 120, 255, 0.1), rgba(140, 100, 255, 0.05));
+}
+
+.page-progress .footer {
+  border-top-color: rgba(64, 200, 200, 0.2);
+  box-shadow: 0 -8px 32px rgba(64, 200, 200, 0.08);
+}
+
+.page-progress .footer-email {
+  color: #7de8e8;
+}
+
+.page-progress .footer-email::before {
+  background: linear-gradient(135deg, rgba(64, 200, 200, 0.1), rgba(100, 220, 255, 0.05));
+}
+
+.page-sponsorship .footer {
+  border-top-color: rgba(80, 180, 140, 0.2);
+  box-shadow: 0 -8px 32px rgba(80, 180, 140, 0.08);
+}
+
+.page-sponsorship .footer-email {
+  color: #7de8b4;
+}
+
+.page-sponsorship .footer-email::before {
+  background: linear-gradient(135deg, rgba(80, 180, 140, 0.1), rgba(100, 200, 180, 0.05));
 }
 
 .footer-bottom {
