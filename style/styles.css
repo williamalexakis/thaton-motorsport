@@ -3,8 +3,8 @@
   --ink-muted: #b8c2d4;
   --bg: #05060b;
   --bg-soft: #0b0d14;
-  --accent: #ff3b3b;
-  --accent-alt: #ff8a35;
+  --accent: #4095ff;
+  --accent-alt: #7dc8ff;
   --font: "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
@@ -25,8 +25,8 @@ body {
   min-height: 100vh;
   font-family: var(--font);
   letter-spacing: 0.02em;
-  background: radial-gradient(circle at 20% 20%, rgba(255, 86, 52, 0.12), transparent 30%),
-    radial-gradient(circle at 80% 0%, rgba(255, 189, 89, 0.14), transparent 28%),
+  background: radial-gradient(circle at 20% 20%, rgba(64, 149, 255, 0.12), transparent 30%),
+    radial-gradient(circle at 80% 0%, rgba(125, 200, 255, 0.14), transparent 28%),
     var(--bg);
   color: var(--ink);
   scroll-behavior: smooth;
@@ -113,8 +113,8 @@ main {
   display: grid;
   place-items: center;
   text-align: center;
-  background: linear-gradient(140deg, rgba(255, 59, 59, 0.08), transparent 38%),
-    linear-gradient(220deg, rgba(255, 138, 53, 0.08), transparent 42%),
+  background: linear-gradient(140deg, rgba(64, 149, 255, 0.08), transparent 38%),
+    linear-gradient(220deg, rgba(125, 200, 255, 0.08), transparent 42%),
     var(--bg-soft);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
@@ -145,7 +145,7 @@ main {
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--accent), var(--accent-alt), transparent);
   transform: translateX(-50%);
-  filter: drop-shadow(0 0 12px rgba(255, 59, 59, 0.35));
+  filter: drop-shadow(0 0 12px rgba(64, 149, 255, 0.35));
 }
 
 .hero-title::before {
@@ -164,16 +164,8 @@ main {
   border-radius: 999px;
 }
 
-.hero-line--top {
-  box-shadow: 0 -6px 30px rgba(255, 59, 59, 0.18);
-}
-
-.hero-line--bottom {
-  box-shadow: 0 6px 30px rgba(255, 138, 53, 0.22);
-}
-
 .hero-subtitle {
-  margin-top: 24px;
+  margin-top: 0px;
   color: var(--ink-muted);
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -285,28 +277,28 @@ main {
 .section--aurora {
   background:
     linear-gradient(140deg, rgba(64, 149, 255, 0.12), transparent 38%),
-    linear-gradient(220deg, rgba(92, 212, 255, 0.1), transparent 42%),
+    linear-gradient(220deg, rgba(92, 212, 255, 0.10), transparent 42%),
     var(--bg-soft);
 }
 
 .section--pulse {
   background:
-    linear-gradient(140deg, rgba(255, 84, 140, 0.12), transparent 38%),
-    linear-gradient(220deg, rgba(204, 124, 255, 0.1), transparent 42%),
+    linear-gradient(140deg, rgba(100, 120, 255, 0.12), transparent 38%),
+    linear-gradient(220deg, rgba(140, 100, 255, 0.10), transparent 42%),
     var(--bg-soft);
 }
 
 .section--track {
   background:
-    linear-gradient(140deg, rgba(255, 78, 64, 0.12), transparent 38%),
-    linear-gradient(220deg, rgba(255, 156, 84, 0.1), transparent 42%),
+    linear-gradient(140deg, rgba(64, 200, 200, 0.12), transparent 38%),
+    linear-gradient(220deg, rgba(100, 220, 255, 0.10), transparent 42%),
     var(--bg-soft);
 }
 
 .section--sunrise {
   background:
-    linear-gradient(140deg, rgba(255, 189, 64, 0.12), transparent 38%),
-    linear-gradient(220deg, rgba(255, 228, 138, 0.1), transparent 42%),
+    linear-gradient(140deg, rgba(80, 180, 140, 0.12), transparent 38%),
+    linear-gradient(220deg, rgba(100, 200, 180, 0.10), transparent 42%),
     var(--bg-soft);
 }
 
