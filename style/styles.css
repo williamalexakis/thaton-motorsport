@@ -38,18 +38,58 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(180deg, #0b0b0d 0%, #050505 100%);
+  background: linear-gradient(180deg, rgba(11, 11, 13, 0.65) 0%, rgba(5, 5, 5, 0.7) 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
   position: sticky;
   top: 0;
   z-index: 10;
+  backdrop-filter: blur(12px);
+  animation: navFadeIn 1.2s ease-out;
 }
+
+@keyframes navFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fade-in-1 { animation-delay: 0.1s; }
+.fade-in-2 { animation-delay: 0.25s; }
+.fade-in-3 { animation-delay: 0.4s; }
+.fade-in-4 { animation-delay: 0.55s; }
+.fade-in-5 { animation-delay: 0.7s; }
 
 .brand {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.brand:hover {
+  transform: none;
 }
 
 .brand-logo {
@@ -87,7 +127,8 @@ body {
   background: linear-gradient(90deg, var(--accent), var(--accent-alt));
   transform: translateX(-50%) scaleX(0);
   transform-origin: center;
-  transition: transform 180ms ease-in-out;
+  box-shadow: 0 0 0 transparent, 0 0 0 transparent;
+  transition: transform 180ms ease-in-out, box-shadow 180ms ease-in-out;
 }
 
 .nav-link:hover,
@@ -98,6 +139,7 @@ body {
 .nav-link:hover::after,
 .nav-link:focus-visible::after {
   transform: translateX(-50%) scaleX(1);
+  box-shadow: 0 0 8px var(--accent), 0 0 16px rgba(64, 149, 255, 0.5);
 }
 
 main {
@@ -239,7 +281,6 @@ main {
   transform: translateX(-50%) scaleX(1);
 }
 
-/* ===== FOOTER ===== */
 .footer {
   background: linear-gradient(180deg, rgba(5, 5, 5, 0.6) 0%, rgba(11, 11, 13, 0.95) 100%);
   border-top: 1px solid rgba(64, 149, 255, 0.15);
@@ -263,7 +304,6 @@ main {
 
 .footer-logo {
   height: 48px;
-  filter: drop-shadow(0 4px 16px rgba(64, 149, 255, 0.3));
 }
 
 .footer-contact {
