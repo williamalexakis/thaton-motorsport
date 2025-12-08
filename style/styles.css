@@ -701,7 +701,7 @@ main {
 .team-photo {
   width: 160px;
   height: 160px;
-  border-radius: 16px;
+  border-radius: 50%;
   overflow: hidden;
   border: 1px solid rgba(64, 149, 255, 0.35);
   box-shadow: 0 10px 35px rgba(64, 149, 255, 0.15);
