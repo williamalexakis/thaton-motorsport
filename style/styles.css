@@ -583,6 +583,157 @@ main {
   text-align: center;
 }
 
+.about-text-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 56px;
+  margin-top: 48px;
+}
+
+.bracket {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Vertical parts - base styles */
+.bracket::before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(64, 149, 255, 0.4);
+  transform: scaleY(0);
+}
+
+/* Horizontal parts - base styles */
+.bracket::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 20px;
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(64, 149, 255, 0.4);
+  transform: scaleX(0);
+}
+
+/* Left top bracket */
+.bracket--left-top {
+  top: 0;
+  left: 0;
+  height: calc(50% + 2px);
+}
+
+.bracket--left-top::before {
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(to top, var(--accent), var(--accent-alt));
+  transform-origin: bottom center;
+  animation: bracketDrawUp 0.5s ease-out 0.3s forwards;
+}
+
+.bracket--left-top::after {
+  top: 0;
+  left: 0;
+  background: linear-gradient(to left, var(--accent-alt), var(--accent-alt));
+  transform-origin: left center;
+  animation: bracketDrawRight 0.3s ease-out 0.7s forwards;
+}
+
+/* Left bottom bracket */
+.bracket--left-bottom {
+  bottom: 0;
+  left: 0;
+  height: calc(50% + 2px);
+}
+
+.bracket--left-bottom::before {
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent), var(--accent-alt));
+  transform-origin: top center;
+  animation: bracketDrawDown 0.5s ease-out 0.3s forwards;
+}
+
+.bracket--left-bottom::after {
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to left, var(--accent-alt), var(--accent-alt));
+  transform-origin: left center;
+  animation: bracketDrawRight 0.3s ease-out 0.7s forwards;
+}
+
+/* Right top bracket */
+.bracket--right-top {
+  top: 0;
+  right: 0;
+  height: calc(50% + 2px);
+}
+
+.bracket--right-top::before {
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to top, var(--accent), var(--accent-alt));
+  transform-origin: bottom center;
+  animation: bracketDrawUp 0.5s ease-out 0.3s forwards;
+}
+
+.bracket--right-top::after {
+  top: 0;
+  right: 0;
+  background: linear-gradient(to right, var(--accent-alt), var(--accent-alt));
+  transform-origin: right center;
+  animation: bracketDrawLeft 0.3s ease-out 0.7s forwards;
+}
+
+/* Right bottom bracket */
+.bracket--right-bottom {
+  bottom: 0;
+  right: 0;
+  height: calc(50% + 2px);
+}
+
+.bracket--right-bottom::before {
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent), var(--accent-alt));
+  transform-origin: top center;
+  animation: bracketDrawDown 0.5s ease-out 0.3s forwards;
+}
+
+.bracket--right-bottom::after {
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to right, var(--accent-alt), var(--accent-alt));
+  transform-origin: right center;
+  animation: bracketDrawLeft 0.3s ease-out 0.7s forwards;
+}
+
+@keyframes bracketDrawDown {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes bracketDrawUp {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes bracketDrawRight {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes bracketDrawLeft {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
 .about-content p {
   margin: 0;
   font-size: 1.1rem;
@@ -598,6 +749,11 @@ main {
 
 .about-content a:hover {
   color: #ffffff;
+}
+
+.page-about .section {
+  min-height: auto;
+  padding-bottom: 80px;
 }
 
 .section--pulse {
