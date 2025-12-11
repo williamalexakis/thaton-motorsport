@@ -494,6 +494,17 @@ main {
   color: #ffffff;
 }
 
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-separator {
+  color: var(--ink-muted);
+  font-size: 1.1rem;
+}
+
 /* Page-specific footer glows */
 .page-about .footer {
   border-top-color: rgba(64, 149, 255, 0.2);
