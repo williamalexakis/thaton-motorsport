@@ -849,6 +849,12 @@ main {
   border-top: 1px solid rgba(255, 140, 80, 0.15);
 }
 
+#who-are-we {
+  min-height: auto;
+  padding: clamp(80px, 10vh, 120px) 28px;
+  border-top: 1px solid rgba(64, 149, 255, 0.12);
+}
+
 .section-content {
   max-width: 800px;
   display: flex;
@@ -886,6 +892,46 @@ main {
   text-align: center;
 }
 
+.logo-pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 16px;
+}
+
+.logo-pair-img {
+  max-width: 200px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
+}
+
+.logo-pair-img--school {
+  max-width: 280px;
+  max-height: 140px;
+  margin-left: -20px;
+}
+
+.logo-pair-link {
+  display: inline-flex;
+}
+
+.logo-pair-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+
+.logo-pair-separator {
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(180deg, transparent, var(--accent), var(--accent-alt), transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(64, 149, 255, 0.4);
+}
 
 .social-icons {
   display: flex;
@@ -905,7 +951,11 @@ main {
   color: var(--accent-alt);
   font-size: 1.8rem;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icon-link.scroll-fade {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .social-icon-link:hover {
@@ -1136,12 +1186,31 @@ main {
   }
 
   .section--dark,
-  .section--accent {
+  .section--accent,
+  .section--aurora {
     padding: 60px 18px;
   }
 
   .section-content {
     gap: 20px;
+  }
+
+  .logo-pair {
+    gap: 24px;
+  }
+
+  .logo-pair-img {
+    max-width: 140px;
+    max-height: 70px;
+  }
+
+  .logo-pair-img--school {
+    max-width: 180px;
+    max-height: 100px;
+  }
+
+  .logo-pair-separator {
+    height: 60px;
   }
 
   .section-text {

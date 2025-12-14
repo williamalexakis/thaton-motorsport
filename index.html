@@ -120,32 +120,46 @@
         </a>
         <a class="cta-card cta-card--track fade-in fade-in-5" href="pages/progress.html">
           <i class="fa-solid fa-list-check cta-icon"></i>
-          <span class="cta-text">Watch Our Journey</span>
+          <span class="cta-text">Our Progress</span>
         </a>
         <a class="cta-card cta-card--sunrise fade-in fade-in-6" href="pages/sponsorship.html">
           <i class="fa-solid fa-handshake cta-icon"></i>
-          <span class="cta-text">Join Our Journey</span>
+          <span class="cta-text">Become A Sponsor</span>
         </a>
+      </div>
+    </section>
+
+    <section id="who-are-we" class="section section--aurora">
+      <div class="section-content">
+        <h2 class="section-title scroll-fade scroll-fade-1">WHO ARE WE?</h2>
+        <p class="section-text scroll-fade scroll-fade-2">We are Θaton Motorsport, a team of six students aged 15 – 17 from <a href="https://www.stcatherines.gr" target="_blank" rel="noopener noreferrer">St. Catherines British school</a> in Athens, Greece, competing in the globally-acclaimed <a href="https://stemracing.com" target="_blank" rel="noopener noreferrer">STEM Racing</a> competition.</p>
+        <div class="logo-pair scroll-fade scroll-fade-3">
+          <img src="assets/images/ThatonLogoTextDark.webp" alt="Thaton Motorsport text logo" class="logo-pair-img">
+          <span class="logo-pair-separator"></span>
+          <a href="https://www.stcatherines.gr" target="_blank" rel="noopener noreferrer" class="logo-pair-link">
+            <img src="assets/images/stcats-logo.webp" alt="St. Catherine's British School logo" class="logo-pair-img logo-pair-img--school">
+          </a>
+        </div>
       </div>
     </section>
 
     <section id="stem-racing" class="section section--dark">
       <div class="section-content">
-        <h2 class="section-title">WHAT IS STEM RACING?</h2>
-        <p class="section-text"><a href="https://stemracing.com" target="_blank" rel="noopener noreferrer">STEM Racing</a> (formerly F1 in Schools) is a global competition in which teams of students design, test, and race miniature F1-style cars powered by CO2 canisters.</p>
-        <p class="section-text">Teams also build their own unique brand and promote it through websites, social media, and advertisements, in order to attain essential sponsorships that fund the project.</p>
-        <p class="section-text">The aim of STEM Racing is to allow students to develop skillsets that extend beyond classrooms, by utilizing real-world tools and techniques to advance their careers in STEM (Science, Technology, Engineering and Mathematics).</p>
+        <h2 class="section-title scroll-fade scroll-fade-1">WHAT IS STEM RACING?</h2>
+        <p class="section-text scroll-fade scroll-fade-2">STEM Racing (formerly F1 in Schools) is a global competition in which teams of students design, test, and race miniature F1-style cars powered by CO2 canisters.</p>
+        <p class="section-text scroll-fade scroll-fade-3">Teams also build their own unique brand and promote it through websites, social media, and advertisements, in order to attain essential sponsorships that fund the project.</p>
+        <p class="section-text scroll-fade scroll-fade-4">The aim of STEM Racing is to allow students to develop skillsets that extend beyond classrooms, by utilizing real-world tools and techniques to advance their careers in STEM (Science, Technology, Engineering and Mathematics).</p>
       </div>
     </section>
 
     <section id="socials" class="section section--accent">
       <div class="section-content">
-        <h2 class="section-title">FOLLOW OUR SOCIALS</h2>
+        <h2 class="section-title scroll-fade scroll-fade-1">FOLLOW OUR SOCIALS</h2>
         <div class="social-icons">
-          <a href="https://www.linkedin.com/in/%CE%B8aton-motorsport-6495b53a0/" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/%CE%B8aton-motorsport-6495b53a0/" target="_blank" rel="noopener noreferrer" class="social-icon-link scroll-fade scroll-fade-2" aria-label="LinkedIn">
             <i class="fa-brands fa-linkedin"></i>
           </a>
-          <a href="https://www.instagram.com/thaton_motorsport/" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Instagram">
+          <a href="https://www.instagram.com/thaton_motorsport/" target="_blank" rel="noopener noreferrer" class="social-icon-link scroll-fade scroll-fade-3" aria-label="Instagram">
             <i class="fa-brands fa-instagram"></i>
           </a>
         </div>
@@ -178,6 +192,25 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollElements = document.querySelectorAll('.scroll-fade');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      scrollElements.forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
 
 </html>
