@@ -68,7 +68,58 @@
 
   <main>
     <section class="section section--track">
-      <h1 class="fade-in fade-in-1">Progress</h1>
+      <div class="progress-layout">
+        <h1 class="fade-in fade-in-1">Progress</h1>
+
+        <div class="progress-timeline scroll-fade">
+          <div class="timeline-line" aria-hidden="true"></div>
+          
+          <div class="timeline-item timeline-item--left">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-branch" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <p class="timeline-date">December 6th 2025</p>
+              <h3 class="timeline-title">Official Logo Created</h3>
+            </div>
+          </div>
+          
+          <div class="timeline-item timeline-item--right">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-branch" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <p class="timeline-date">November 30th 2025</p>
+              <h3 class="timeline-title">Official Website Created</h3>
+            </div>
+          </div>
+          
+          <div class="timeline-item timeline-item--left">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-branch" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <p class="timeline-date">November 27th 2025</p>
+              <h3 class="timeline-title">Team Name Chosen</h3>
+            </div>
+          </div>
+          
+          <div class="timeline-item timeline-item--right">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-branch" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <p class="timeline-date">November 2025</p>
+              <h3 class="timeline-title">First Team Meeting</h3>
+            </div>
+          </div>
+
+          <div class="timeline-item timeline-item--left">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-branch" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <p class="timeline-date">November 2025</p>
+              <h3 class="timeline-title">Thaton Motorsport Founded</h3>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
   
@@ -97,6 +148,105 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollElements = document.querySelectorAll('.scroll-fade');
+      const timeline = document.querySelector('.progress-timeline');
+      const timelineItems = document.querySelectorAll('.timeline-item');
+      const clamp = (val, min, max) => Math.min(max, Math.max(min, val));
+      let maxTrunkProgress = 0;
+
+      function applyTrunkProgress(val) {
+        if (!timeline) return;
+        maxTrunkProgress = Math.max(maxTrunkProgress, val);
+        timeline.style.setProperty('--timeline-progress', maxTrunkProgress.toFixed(3));
+        timelineItems.forEach(item => {
+          const threshold = parseFloat(item.dataset.trunkProgress || '0');
+          if (maxTrunkProgress + 0.0001 >= threshold) {
+            item.classList.add('active');
+          }
+        });
+      }
+
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      scrollElements.forEach(el => scrollObserver.observe(el));
+
+      const updateTimelineBounds = () => {
+        if (!timeline) return;
+        if (!timelineItems.length) return;
+        const firstNode = timelineItems[0].querySelector('.timeline-node');
+        const lastNode = timelineItems[timelineItems.length - 1].querySelector('.timeline-node');
+        if (!firstNode || !lastNode) return;
+
+        const timelineRect = timeline.getBoundingClientRect();
+        const getCenterY = (el) => {
+          const rect = el.getBoundingClientRect();
+          return rect.top + rect.height / 2;
+        };
+
+        const startOffset = Math.max(0, getCenterY(firstNode) - timelineRect.top);
+        const endOffset = Math.max(0, timelineRect.bottom - getCenterY(lastNode));
+        const usableHeight = Math.max(1, timelineRect.height - startOffset - endOffset);
+
+        timeline.style.setProperty('--timeline-start', `${startOffset}px`);
+        timeline.style.setProperty('--timeline-end', `${endOffset}px`);
+
+        timelineItems.forEach(item => {
+          const node = item.querySelector('.timeline-node');
+          if (!node) return;
+          const nodeCenter = getCenterY(node);
+          const relativeY = nodeCenter - (timelineRect.top + startOffset);
+          const fraction = clamp(relativeY / usableHeight, 0, 1);
+          item.dataset.trunkProgress = fraction.toFixed(4);
+        });
+
+        applyTrunkProgress(maxTrunkProgress);
+      };
+
+      const progressObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const step = parseFloat(entry.target.dataset.trunkProgress || '0');
+            applyTrunkProgress(step);
+          }
+        });
+      }, {
+        threshold: 0.01,
+        rootMargin: '0px 0px -20% 0px'
+      });
+
+      const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.35,
+        rootMargin: '-20% 0px -40% 0px'
+      });
+
+      updateTimelineBounds();
+      timelineItems.forEach(item => {
+        progressObserver.observe(item);
+        timelineObserver.observe(item);
+      });
+
+      window.addEventListener('load', updateTimelineBounds);
+      window.addEventListener('resize', () => requestAnimationFrame(updateTimelineBounds));
+    });
+  </script>
 </body>
 
 </html>
