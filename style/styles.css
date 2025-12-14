@@ -792,9 +792,19 @@ main {
   color: #ffffff;
 }
 
+.page-sponsorship .about-content p,
+.page-sponsorship .about-content a {
+  font-size: 1.25rem;
+}
+
 .page-about .section {
   min-height: auto;
   padding-bottom: 80px;
+}
+
+.page-sponsorship .section {
+  min-height: auto;
+  padding: clamp(72px, 10vh, 110px) 28px 72px;
 }
 
 .section--pulse {
@@ -1180,6 +1190,11 @@ main {
     padding: 72px 18px 80px;
   }
 
+  .page-sponsorship .section {
+    min-height: auto;
+    padding: 60px 18px 64px;
+  }
+
   .section h1,
   .section h2 {
     letter-spacing: 0.1em;
@@ -1187,7 +1202,8 @@ main {
 
   .section--dark,
   .section--accent,
-  .section--aurora {
+  .section--aurora,
+  .section--sunrise {
     padding: 60px 18px;
   }
 
